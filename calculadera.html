@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<svg xmlns="http://www.w3.org/2000/svg">
+    <text x="10" y="60" font-family="Oswald" font-size="60" font-weight="bold" fill="#ffffff6f">UFU</text>
+</svg>    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css" media="screen"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+    <title>Calculadora de Notas Universitárias</title>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="center">
+        <h1>Calculadora de Notas Universitárias</h1>
+    
+        <label for="curso">Escolha a carga horária total do curso:</label>
+        <select id="curso">
+            <option value="até 2400 horas">Até 2400 horas</option>
+            <option value="entre 2400 e 3600 horas">Entre 2400 e 3600 horas</option>
+            <option value="mais de 3600 horas">Mais de 3600 horas</option>
+        </select>
+    
+        <label for="semestres">Selecione quantos semestres entrarão no cálculo:</label>
+        <input placeholder="Número de semestres" type="number" id="semestres" min="1" max="10">
+    
+        <label for="craMga">Escolha a modalidade de cálculo:</label>
+        <select id="craMga">
+            <option value="CRA">CRA</option>
+            <option value="MGA">MGA</option>
+        </select>
+    
+        <button onclick="calcular()">Calcular</button>
+    
+        <div id="resultado"></div>
+    </div>
+</body>
+</html>
