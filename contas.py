@@ -24,6 +24,7 @@ def semestres():
     )
     selected = semestres.ask(screen=False)
     return selected
+
 def curso():
     curso = Menu(
         "até 2400 horas",
@@ -34,12 +35,15 @@ def curso():
         panel_title="selecione em qual categoria você se encaixa",
         selection_char="->",
     )
+
     selected = curso.ask(screen=False)
     return selected
+
 def cra(result_curso):
     matriculas_do_semestre = int(input("Quantas matérias você se matriculou no semestre? "))
 
-    trancamento = int(input("Digite a quantidade de matérias com trancamento parcial: ")) - 1
+    trancamento = (int(input("Digite a quantidade de matérias com trancamento parcial: ")) - 1)
+    
     if result_curso == "até 2400 horas":
         if trancamento <=4:
             trancamento = -1
