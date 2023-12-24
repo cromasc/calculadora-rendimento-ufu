@@ -134,3 +134,8 @@ function main() {
         console.log(`MGA: ${mgaResult}`);
     }
 }
+
+function ufu() {
+    const resultado = document.querySelector('#resultado');
+    resultado.textContent = '';
+}

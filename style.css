@@ -1,5 +1,4 @@
 html {
-    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -12,7 +11,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 100%;
+    padding: 100px;
 }
 
 .center {
@@ -29,13 +29,14 @@ body {
     font-family: Oswald;
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.173);
     color: rgb(0, 0, 0);
-    max-width: 50vw;
+    max-width: 40vw;
 }
 
 h1 {
     color: inherit;
     font-size: 30px;
     text-transform: uppercase;
+    text-align: center;
 }
 
 label {
@@ -62,6 +63,7 @@ button:hover {
     transition: .2s;
     word-wrap: break-word;
     font-family: inherit;
+    line-break: anywhere;
 }
 
 select {
@@ -128,11 +130,27 @@ button:hover {
 }
 
 svg {
+    width: 110px;
+    height: 90px;
+}
+
+#ufu {
+    cursor: pointer;
     position: absolute;
     top: 0px;
     left: 0px;
-    width: auto;
-    pointer-events: none;
+    width: 110px;
+    height: 90px;
+    background-color: transparent;
+    border: none;
+    transition: .2s;
+}
+#ufu:hover {
+    transform: scale(1.1);
+}
+
+button:focus {
+    outline: none;
 }
 
 @keyframes gradientRotation {
