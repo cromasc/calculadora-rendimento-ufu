@@ -21,19 +21,17 @@ function printErro2() {
     }, 1000);
 }
 
-function cra(resultCurso) {
-    const matriculasDoSemestre = parseInt(prompt("Quantas matérias você se matriculou no semestre?"), 10);
+function cra(resultCurso, numeroMaterias) {
 
-    const trancamento = parseInt(prompt("Digite a quantidade de matérias com trancamento parcial:")) - 1;
-    const numTrancamento = trancamento + 1;
+    let trancamento = parseInt(prompt("Digite a quantidade de matérias com trancamento parcial:"));
 
-    if (numTrancamento > matriculasDoSemestre) {
+    if (trancamento > numeroMaterias) {
         printErro1();
     } else {
         let cargaHorariaMatriculada = 0;
         let cargaHorariaReprovacaoFalta = 0;
 
-        for (let i = 0; i < numTrancamento; i++) {
+        for (let i = 0; i < trancamento; i++) {
             const cargaT = parseInt(prompt("Digite a carga horária dos componentes curriculares com trancamento parcial:"));
             cargaHorariaMatriculada += cargaT;
         }
@@ -41,7 +39,7 @@ function cra(resultCurso) {
         const reprovacaoFaltas = parseInt(prompt("Digite a quantidade de reprovação por faltas:")) - 1;
         const numReprovacao = reprovacaoFaltas + 1;
 
-        if (numReprovacao > matriculasDoSemestre || (numReprovacao + numTrancamento) > matriculasDoSemestre) {
+        if (numReprovacao > numeroMaterias || (numReprovacao + trancamento) > numeroMaterias) {
             printErro1();
         } else {
             for (let i = 0; i < numReprovacao; i++) {
@@ -49,7 +47,7 @@ function cra(resultCurso) {
                 cargaHorariaReprovacaoFalta += cargaR;
             }
 
-            const matriculaBasica = matriculasDoSemestre - numTrancamento - numReprovacao;
+            const matriculaBasica = numeroMaterias - trancamento - numReprovacao;
 
             if (resultCurso === "até 2400 horas") {
                 trancamento = trancamento <= 4 ? -1 : trancamento - 4;
@@ -90,12 +88,11 @@ function cra(resultCurso) {
     }
 }
 
-function mga() {
-    const materiasMatriculadas = parseInt(prompt("Digite a quantidade de matérias cursadas:"), 10);
+function mga(numeroMaterias) {
     let produto = 0;
     let carga = 0;
 
-    for (let i = 0; i < materiasMatriculadas; i++) {
+    for (let i = 0; i < numeroMaterias; i++) {
         while (true) {
             try {
                 const input = prompt("Digite a carga horária e a nota da matéria:");
@@ -117,21 +114,23 @@ function mga() {
 }
 
 function main() {
-    const resultCurso = prompt("Informe a categoria do curso:");
-    const semestresSelecionados = parseInt(prompt("Informe a quantidade de semestres:"), 10);
+    const resultCurso = document.querySelector("#curso").value;
+    const semestresSelecionados = parseInt(document.querySelector("#semestres").value, 10);
+    const modalidade = document.querySelector("#craMga").value;
+    const resultado = document.querySelector('#resultado');
+    const numeroMaterias = prompt("Digite o número de matérias cursadas");
 
-    if (prompt("Informe a opção (CRA ou MGA):") === "CRA") {
+    if (modalidade == "CRA") {
         let totalCra = 0;
         for (let i = 0; i < semestresSelecionados; i++) {
-            totalCra += cra(resultCurso);
+            totalCra += cra(resultCurso, numeroMaterias);
         }
 
         const craMedio = totalCra / semestresSelecionados;
-        console.log(`Média de CRA de ${semestresSelecionados} semestres: ${craMedio}`);
+
+        resultado.insertAdjacentHTML('beforeend', `Média de CRA de ${semestresSelecionados} semestres: ${craMedio}`);
     } else {
-        const mgaResult = mga();
+        const mgaResult = mga(numeroMaterias);
         console.log(`MGA: ${mgaResult}`);
     }
 }
-
-//main();
